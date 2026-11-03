@@ -1,309 +1,225 @@
-# 🐝 NeuroHive — Système IA Vivant
+# 🧠 NeuroHive v4.0 — Architecture Cognitive Avancée
 
 <div align="center">
 
-![NeuroHive](https://img.shields.io/badge/NeuroHive-v3.0-green)
+![Version](https://img.shields.io/badge/version-4.0-emerald)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![React](https://img.shields.io/badge/React-18.0-61dafb)
 
-**Système IA vivant bio-inspiré intégrant DNRT (ICLR 2024), NEURONS (ICCV 2025), CPU+GPU+TPU+NPU+LPU avec monitoring temps réel, déploiement de modèles ternaires, et reconstruction fMRI-to-vidéo**
+**Dashboard professionnel pour ingénieurs en IA cognitive**  
+*Intégrant les dernières recherches en neurosciences computationnelles et architectures bio-inspirées*
 
-[Architecture](#-architecture) • [DNRT Vivant](#-dnrt---système-neuronal-vivant) • [NEURONS](#-neurons---fmri-to-video) • [Fonctionnalités](#-fonctionnalités) • [Installation](#-installation)
+[Architecture](#-architecture) • [Fonctionnalités](#-fonctionnalités) • [Recherche Intégrée](#-recherche-intégrée) • [Installation](#-installation)
 
 </div>
 
 ---
 
-## 📋 Table des Matières
+## 🎯 Vue d'Ensemble
 
-- [Vue d'Ensemble](#-vue-densemble)
-- [Architecture](#-architecture)
-- [Fonctionnalités](#-fonctionnalités)
-- [Installation](#-installation)
-- [Utilisation](#-utilisation)
-- [Composants](#-composants)
-- [Intégrations](#-intégrations)
-- [Références](#-références)
+**NeuroHive v4.0** est un dashboard de visualisation et d'orchestration conçu pour les **ingénieurs en IA cognitive** et **architectes de systèmes intelligents**. Il intègre les frameworks de recherche les plus avancés en neurosciences computationnelles et architectures bio-inspirées.
 
----
-
-## 🌟 Vue d'Ensemble
-
-**NeuroHive** est un **système IA vivant** bio-inspiré qui visualise et orchestre une architecture distribuée hétérogène. Le système intègre :
-
-- 🧬 **DNRT Vivant** : Système neuronal bio-inspiré avec réponses dynamiques (ICLR 2024)
-- 🐝 **Ruche d'Agents** : 32 agents spécialisés (ouvriers, math, superviseurs, LLM, Mem0, garde)
-- 🔬 **Matériel IA** : Comparaison approfondie CPU vs GPU vs TPU vs NPU vs LPU
-- ⚡ **Monitoring GPU** : Style nvitop/nvidia_gpu_exporter avec métriques temps réel
-- 🧊 **Modèles Ternaires** : Déploiement sur GPU/CPU/NPU/FPGA avec réduction 20×
-- 🧠 **NEURONS** : Reconstruction fMRI-to-vidéo (ICCV 2025)
-- 🛡️ **Garde Unique** : Point d'entrée/sortie centralisé
-- 🌐 **Réseau Mesh** : Topologie distribuée avec synchronisation
-
----
-
-## 🏗️ Architecture
-
-### Vue d'Ensemble du Système
+### 🏗️ Architecture du Système
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                         ENTRÉE                               │
-│                    (API REST/gRPC)                           │
-└──────────────────────┬──────────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    🛡️ GARDE ×1                               │
-│         (Authentification + Rate Limiting + Routage)        │
-└──────────────────────┬──────────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────────┐
-│              👁️ SUPERVISEURS ×4                              │
-│         (Orchestration + Load Balancing + Monitoring)       │
-└──────────────────────┬──────────────────────────────────────┘
-                       │
-          ┌────────────┼────────────┐
-          ▼            ▼            ▼
-    ┌──────────┐ ┌──────────┐ ┌──────────┐
-    │⚒️Ouvriers│ │🔢 Math   │ │🧠 LLM ×8 │
-    │   ×12    │ │   ×8     │ │(70B-3B)  │
-    └──────────┘ └──────────┘ └──────────┘
-                       │
-                       ▼
-              ┌────────────────┐
-              │💾 MEM0 ×4      │
-              │(Mémoire Vector)|
-              └────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────────┐
-│                         SORTIE                               │
-│                  (Streaming/Réponse)                         │
+│                    NEUROHIVE v4.0                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │           CORE COGNITIVE (3 Modules)                  │   │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐   │   │
+│  │  │ Cerebellum  │  │ Xsembles2P  │  │ MorphoLogic │   │   │
+│  │  │ Architecture│  │ Ensembles   │  │ Morphologie │   │   │
+│  │  └─────────────┘  └─────────────┘  └─────────────┘   │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │        NEUROSCIENCES COMPUTATIONNELLES (2 Modules)    │   │
+│  │  ┌──────────────────┐  ┌──────────────────┐          │   │
+│  │  │  DNRT (ICLR'24)  │  │ NEURONS (ICCV'25)│          │   │
+│  │  │  Réponses Dyn.   │  │ fMRI-to-Video    │          │   │
+│  │  └──────────────────┘  └──────────────────┘          │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │           SYSTÈME IA DISTRIBUÉ (9 Modules)            │   │
+│  │  Ruche • Hardware • GPU Monitor • Ternaire • Agents   │   │
+│  │  Mémoire • Gardes • Réseau • Processeurs              │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
 └─────────────────────────────────────────────────────────────┘
 ```
-
-### Infrastructure Matérielle
-
-**8 Machines distribuées** avec processeurs spécialisés :
-
-| Machine | GPU | TPU | NPU | ASIC | Total Cores |
-|---------|-----|-----|-----|------|-------------|
-| M-A | H100 | v4 | - | α | 208 |
-| M-B | H100 | v4 | - | β | 208 |
-| M-C | A100 | v4 | - | γ | 192 |
-| M-D | A100 | v4 | - | δ | 192 |
-| M-E | RTX4090 | - | Lunar Lake | - | 128 |
-| M-F | MI300X | - | - | - | 128 |
-| M-G | - | v5p | Hexagon | - | 96 |
-| M-H | - | - | Apple ANE | - | 64 |
-
-**Total : 32 processeurs, 1,216 cœurs, ~4.5 kW**
-
----
-
-## 🧬 DNRT — Système Neuronal Vivant
-
-**Dynamic Neural Response Tuning** (ICLR 2024) est un mécanisme bio-inspiré qui rend les réseaux de neurones artificiels plus proches des neurones biologiques.
-
-### Concept Biologique
-
-Les neurones biologiques possèdent des **conditions de réponse dynamiques** qui dépendent de :
-- Propriétés neuronales intrinsèques
-- Environnement en temps réel
-- Force et caractéristiques du signal d'entrée
-
-Contrairement aux activations statiques des ANN, DNRT introduit :
-
-### ⚡ RAA — Response-Adaptive Activation
-
-**Ajuste dynamiquement les seuils d'activation** selon la force du signal :
-
-```
-Signal fort → Seuil plus bas (plus sensible)
-Signal faible → Seuil plus haut (moins sensible)
-```
-
-**Implémentation :**
-```python
-# Ajustement dynamique du seuil
-threshold = max(0.3, min(0.9,
-    threshold + (random - 0.5) * 0.05))
-
-# Réponse adaptative
-if input_strength > 0.8:
-    response = "high"
-elif input_strength > 0.4:
-    response = "medium"
-else:
-    response = "low"
-```
-
-### 🎯 ARR — Aggregated Response Regularization
-
-**Améliore la spécificité de catégorie** en imposant des contraintes sur la distribution de réponse :
-
-```python
-# Regularization loss
-L_arr = λ * ||response_dist - target_dist||²
-
-# Target: distribution spécifique
-target_dist = one_hot(category)
-
-# Response: distribution actuelle
-response_dist = softmax(output)
-```
-
-### Visualisation Temps Réel
-
-Le dashboard DNRT offre :
-- **20 neurones** (5 input, 10 hidden, 5 output)
-- **Simulation bio-inspirée** avec potentiels membranaires
-- **Signaux animés** entre neurones
-- **Contrôle interactif** de l'intensité d'entrée
-- **4 modes** : Système Vivant, RAA, ARR, Vue d'ensemble
-
-### Performance
-
-| Métrique | Valeur |
-|----------|--------|
-| Dataset | CIFAR-100 |
-| Top-1 Accuracy | 82.4% |
-| vs Baseline | +2.1% |
-| Interprétabilité | SOTA |
 
 ---
 
 ## ✨ Fonctionnalités
 
-### 1. 🧬 DNRT — Système Neuronal Vivant
+### 🎯 Core Cognitive (Nouveau v4.0)
 
-Visualisation temps réel d'un réseau neuronal bio-inspiré avec :
-- **20 neurones** organisés en 3 couches (input, hidden, output)
-- **Potentiels membranaires** animés
-- **Seuils dynamiques** ajustables (RAA)
-- **Spécificité de catégorie** (ARR)
-- **Signaux propagés** entre neurones
+#### 1. 🧠 Architecture Cognitive Cerebellum
+**Framework Python modulaire inspiré du cerveau humain**
+
+- **Boucle cognitive complète** en 10 étapes :
+  - `Environment.observe()` → `Perception.perceive()` → `Attention.select()`
+  - `Controller.interpret()` → `Memory.recall()` → `Planner.create_plan()`
+  - `Reasoner.execute()` → `Action.execute()` → `Learning.update()`
+  - `Memory.store_event()` → `Controller.is_goal_satisfied()`
+
+- **7 types de mémoire** :
+  - Working Memory (contexte actuel)
+  - Episodic Memory (expériences passées)
+  - Semantic Memory (connaissances)
+  - Procedural Memory (compétences)
+  - Vector Memory (recherche similarité)
+  - Graph Memory (relations)
+  - Stream Memory (événements temporels)
+
+- **4 stratégies de raisonnement** :
+  - LoopReasoner (ReAct)
+  - LLMReasoner (séquentiel)
+  - HierarchicalReasoner (multi-niveaux)
+  - RecursiveReasoner (décomposition)
+
+**Visualisation** : Canvas interactif avec boucle cognitive animée
+
+#### 2. 🎯 Ensembles Neuronaux Xsembles2P
+**Analyse d'imagerie calcique deux photons**
+
+- **ONsembles/OFFsembles** : Identification de patterns d'activation/inhibition
+- **Pipeline complet** en 10 étapes :
+  1. Lecture vidéo raw → 2. Enregistrement voltage → 3. Correction mouvement
+  4. Détection neurones actifs → 5. Signaux calciques → 6. Inférence spikes
+  7. Activité population → 8. Extraction ensembles → 9. Sauvegarde → 10. Visualisation
+
+- **Raster plot** temporel avec sélection d'ensembles
+- **Localisation spatiale** des neurones avec connexions
+
+**Visualisation** : Canvas avec neurones animés et connections dynamiques
+
+#### 3. 🌳 Analyse Morphologique MorphoLogic
+**Extraction de morphométriques neuronales depuis reconstructions SWC 2D**
+
+- **4 types de neurones** : Pyramidal, Interneuron, Purkinje, Bipolar
+- **3 modes de visualisation** :
+  - 🌳 **Reconstruction** : Arbre morphologique avec branches récursives
+  - 🎯 **Analyse de Sholl** : Intersections concentriques
+  - 📊 **Métriques** : Graphiques comparatifs
+
+- **Métriques complètes** :
+  - Nombre de branches
+  - Longueur totale (µm)
+  - Diamètre soma (µm)
+  - Branches primaires
+  - Ordre maximum
+
+**Visualisation** : Canvas avec rendu morphologique procédural
+
+---
+
+### 🧬 Neurosciences Computationnelles
+
+#### 4. 🧬 DNRT — Dynamic Neural Response Tuning (ICLR 2024)
+**Système neuronal vivant bio-inspiré**
+
+- **20 neurones** organisés en 3 couches (5 input, 10 hidden, 5 output)
+- **RAA (Response-Adaptive Activation)** : Seuils dynamiques ajustables
+- **ARR (Aggregated Response Regularization)** : Spécificité de catégorie
+- **Simulation temps réel** avec potentiels membranaires
 - **Contrôle interactif** de l'intensité d'entrée
 
-**Modes de visualisation :**
-- 🧬 **Système Vivant** : Simulation temps réel
-- ⚡ **RAA** : Response-Adaptive Activation détaillée
-- 🎯 **ARR** : Aggregated Response Regularization
-- 📊 **Vue d'ensemble** : Architecture complète
+**Performance** : CIFAR-100 Top-1 Accuracy 82.4% (+2.1% vs baseline)
 
-### 2. 🐝 Ruche d'Agents (Hive Visualization)
+#### 5. 📹 NEURONS — fMRI-to-Video (ICCV 2025)
+**Reconstruction vidéo à partir de signaux fMRI**
 
-Visualisation temps réel de la ruche d'IA avec :
-- **32 agents** répartis en 6 catégories
-- **Connexions dynamiques** entre agents
-- **Particules de données** animées
-- **Métriques live** : throughput, latence, charge
+- **Pipeline en 6 étapes** :
+  1. Brain Model (fMRI → CLIP embeddings)
+  2. Decoupler (séparation contenu/mouvement)
+  3. Reconstruction (keyframes via UnCLIP)
+  4. Captioning (BLIP-2 / GPT-2)
+  5. Video Gen (AnimateDiff)
+  6. Evaluation (FID, SSIM, LPIPS, CLIP)
 
-**Types d'agents :**
+- **Émulation du cortex visuel** : V1-V5/MT
+- **Métriques SOTA** : FID 15.2, SSIM 0.72, LPIPS 0.18, CLIP 0.68
+
+---
+
+### ⚙️ Système IA Distribué
+
+#### 6. 🐝 Ruche d'Agents
+**32 agents distribués en 6 catégories**
+
 - ⚒️ **Ouvriers (12)** : Exécution de tâches
 - 🔢 **Math (8)** : Calcul matriciel et tensoriel
-- 👁️ **Superviseurs (4)** : Orchestration et monitoring
-- 🧠 **LLM (8)** : Modèles de langage (70B à 3B paramètres)
-- 💾 **Mem0 (4)** : Mémoire vectorielle persistante
-- 🛡️ **Garde (1)** : Point d'entrée/sortie unique
+- 👁️ **Superviseurs (4)** : Orchestration
+- 🧠 **LLM (8)** : Modèles de langage (70B à 3B)
+- 💾 **Mem0 (4)** : Mémoire vectorielle
+- 🛡️ **Garde (1)** : Point d'entrée/sortie
 
-### 2. 🧬 NEURONS — fMRI-to-Video Reconstruction
+#### 7. 🔬 Comparaison Matériel IA
+**CPU vs GPU vs TPU vs NPU vs LPU**
 
-Intégration du framework **NEURONS** (ICCV 2025) pour la reconstruction vidéo à partir de signaux fMRI :
+| Processeur | Philosophie | Cœurs | Bande Passante | Puissance |
+|------------|-------------|-------|----------------|-----------|
+| CPU | Usage général | 2-128 | ~0.5 TB/s | 50-400W |
+| GPU | Parallèle | 10K+ | ~8 TB/s | 300-1000W |
+| TPU | ASIC Tensor | 128×128 | ~1.2 TB/s | 90-192W |
+| NPU | Edge AI | MAC | ~100 GB/s | 4-10W |
+| LPU | LLM déterministe | SRAM | ~80 TB/s | ~150W |
 
-**Pipeline en 6 étapes :**
-1. 🧠 **Brain Model** : Encodage fMRI → embeddings CLIP
-2. 🔀 **Decoupler** : Séparation contenu/mouvement (voies ventrale/dorsale)
-3. 🎨 **Reconstruction** : Génération keyframes via UnCLIP
-4. 📝 **Captioning** : BLIP-2 / GPT-2 pour descriptions
-5. 🎬 **Video Gen** : AnimateDiff pour reconstruction temporelle
-6. 📊 **Evaluation** : FID, SSIM, LPIPS, CLIP Score
+#### 8. ⚡ Grille de Processeurs
+**32 processeurs sur 8 machines**
 
-**Visualisation du cortex visuel :**
-- V1 : Détection des bords
-- V2 : Intégration des contours
-- V3 : Formes globales
-- V4 : Couleur et texture
-- V5/MT : Mouvement et flux optique
+- H100, A100, RTX4090, MI300X, TPU v4/v5p, NPU Lunar Lake
+- Monitoring temps réel : utilisation, température, puissance
+- Consommation totale : ~4.5 kW
 
-**Métriques SOTA :**
-- FID: 15.2 | SSIM: 0.72 | LPIPS: 0.18 | CLIP: 0.68
+#### 9. 📊 GPU Monitor
+**Style nvitop/nvidia_gpu_exporter**
 
-### 3. 🔬 Comparaison Matériel IA
+- 8 devices monitorés
+- Métriques live : utilisation, VRAM, température, puissance
+- Graphiques historiques 60s
+- Processus GPU avec PID et mémoire
 
-Analyse approfondie des 5 architectures de processeurs :
+#### 10. 🧊 Modèles Ternaires
+**Réduction 20× des poids**
 
-| Aspect | CPU | GPU | TPU | NPU | LPU |
-|--------|-----|-----|-----|-----|-----|
-| **Philosophie** | Usage général | Parallèle | ASIC Tensor | Edge AI | LLM déterministe |
-| **Cœurs** | 2-128 complexes | 10K+ SIMT | 128×128 systolique | MAC arrays | SRAM conveyor |
-| **Mémoire** | DDR DRAM | HBM | HBM | LPDDR+SRAM | SRAM on-chip |
-| **Bande passante** | ~0.5 TB/s | ~8 TB/s | ~1.2 TB/s | ~100 GB/s | ~80 TB/s |
-| **Puissance** | 50-400W | 300-1000W | 90-192W | 4-10W | ~150W |
-| **Entraînement** | Lent | Meilleur | Oui (GCP) | Non | Non |
+- FP32 (1B params) : 4 GB → **Ternary : 200 MB**
+- Déploiement sur GPU/CPU/NPU/FPGA
+- Performance : B200 (~5ms) vs ASIC ternaire (~50µs)
 
-**Idée clé :** Aucun processeur ne l'emporte seul. Les meilleurs systèmes utilisent une approche hétérogène.
+#### 11-14. Agents, Mémoire, Gardes, Réseau
+**Infrastructure distribuée complète**
 
-### 4. 📊 GPU Monitor (Style nvitop)
+- Détails des 32 agents avec logs temps réel
+- Mem0 ×4 + LLM ×8 avec métriques
+- Garde unique avec journal des requêtes
+- Réseau mesh avec 28 connexions
 
-Monitoring temps réel des accélérateurs :
-- **8 devices** : H100, A100, RTX4090, MI300X, TPU v4, NPU
-- **Métriques live** : utilisation, VRAM, température, puissance
-- **Graphiques historiques** : 60 dernières secondes
-- **Processus GPU** : PID, mémoire, utilisation par processus
-- **Alertes** : seuils de température et utilisation
+---
 
-**Intégrations :**
-- **nvitop** : Monitoring temps réel style top
-- **nvidia_gpu_exporter** : Métriques Prometheus pour Grafana
+## 🔬 Recherche Intégrée
+
+### Papers Scientifiques
+
+| Projet | Conférence | Titre | Lien |
+|--------|-----------|-------|------|
+| **Cerebellum** | - | Cognitive Architecture Framework | [GitHub](https://github.com/Root1V/cerebellum-cognitive-architecture) |
+| **Xsembles2P** | NatComms 2024 | Stimulus encoding by specific inactivation | [GitHub](https://github.com/PerezOrtegaJ/Xsembles2P) |
+| **MorphoLogic** | Protocols.io 2026 | Neuronal morphometrics extraction | [GitHub](https://github.com/MaxLevianSterling/MorphoLogic) |
+| **DNRT** | ICLR 2024 | Dynamic Neural Response Tuning | [GitHub](https://github.com/horrible-dong/DNRT) |
+| **NEURONS** | ICCV 2025 | fMRI-to-Video Reconstruction | [GitHub](https://github.com/xmed-lab/NEURONS) |
+
+### Outils de Monitoring
+
+- **nvitop** : Monitoring GPU temps réel
+- **nvidia_gpu_exporter** : Métriques Prometheus
 - **gpu-hot** : Détection thermal throttling
-
-### 5. 🧊 Déploiement Modèles Ternaires
-
-Réduction de poids 20× pour les réseaux ternaires ({-1, 0, +1}) :
-
-**Stockage :**
-- FP32 (1B params) : 4 GB
-- INT8 (1B params) : 1 GB
-- **Ternary (1B params) : 200 MB** ← 20× réduction
-
-**Performance par plateforme (modèle 1B) :**
-
-| Plateforme | Natif? | Decode 1B | Puissance | Efficacité |
-|------------|--------|-----------|-----------|------------|
-| NVIDIA B200 | Émulé | ~5 ms | 500W | 10 ms/J |
-| NVIDIA H100 | Émulé | ~15 ms | 350W | 4.3 ms/J |
-| AMD MI300X | Émulé | ~20 ms | 750W | 2.0 ms/J |
-| Apple M4 | Émulé | ~175 ms | 12W | 5-7 tok/J |
-| FPGA ZCU104 | **NATIF** | ~50 ms | 5W | ~10× GPU |
-| **ASIC Ternaire** | **NATIF** | **~50 µs** | **5W** | **OPTIMAL** |
-
-**Points clés :**
-1. FPGA = seule plateforme actuelle avec datapath ternaire natif
-2. Blackwell B200 réduit l'écart avec ASIC custom
-3. NPU mobiles permettent inférence 1B sur smartphone
-4. Avantage ASIC maximal sur edge (5W)
-
-### 6. 🛡️ Garde Unique
-
-Point d'entrée/sortie centralisé :
-- **Validation** des requêtes entrantes/sortantes
-- **Rate limiting** et authentification
-- **Routage** vers superviseurs
-- **Journal** des requêtes avec latence
-
-**Flux :** Entrée → Garde → Superviseurs → Agents → Garde → Sortie
-
-### 7. 🌐 Réseau Distribué
-
-Topologie mesh avec 8 machines :
-- **28 connexions** inter-machines
-- **Paquets animés** visualisant le trafic
-- **Protocole** : gRPC + WebSocket + Protocol Buffers
-- **Synchronisation** : Raft consensus + CRDT
-- **Performance** : Latence P50 ~2ms, P99 ~12ms, Débit 2.4 GB/s
 
 ---
 
@@ -337,8 +253,92 @@ npm run build
 # Build production
 npm run build
 
-# Le dossier dist/ contient l'application statique
-# Déployer sur Vercel, Netlify, GitHub Pages, etc.
+# Déployer dist/ sur Vercel, Netlify, GitHub Pages, etc.
+```
+
+---
+
+## 🎨 Design System
+
+### Palette de Couleurs
+
+```css
+--primary: #10b981 (emerald)
+--secondary: #06b6d4 (cyan)
+--accent: #8b5cf6 (purple)
+--danger: #ef4444 (red)
+--warning: #f59e0b (amber)
+--success: #22c55e (green)
+```
+
+### Composants
+
+- **Glass Cards** : Backdrop blur avec bordures subtiles
+- **Gradient Backgrounds** : Transitions fluides entre couleurs
+- **Animations** : Pulse, float, slide-in, fade-in, scale-in
+- **Progress Bars** : Avec effet de flux de données
+- **Metric Cards** : Hover effects avec glow
+
+### Typographie
+
+- **Titres** : Gradient text (emerald → cyan → purple)
+- **Corps** : Inter, -apple-system, sans-serif
+- **Code** : Monospace pour visualisations techniques
+
+---
+
+## 📊 Métriques Système
+
+### Performance Globale
+
+| Métrique | Valeur |
+|----------|--------|
+| Composants React | 14 |
+| Modules TypeScript | 43 |
+| Build Size (JS) | 318 KB (81 KB gzippé) |
+| Build Size (CSS) | 56 KB (9 KB gzippé) |
+| Time to Interactive | < 2s |
+
+### Modules par Catégorie
+
+- **Core Cognitive** : 3 modules (Cerebellum, Xsembles2P, MorphoLogic)
+- **Neurosciences** : 2 modules (DNRT, NEURONS)
+- **Système IA** : 9 modules (Ruche, Hardware, GPU, etc.)
+
+---
+
+## 🛠️ Stack Technique
+
+### Frontend
+
+- **React 18** : Framework UI avec hooks
+- **TypeScript 5** : Typage statique
+- **Vite 6** : Build tool ultra-rapide
+- **Tailwind CSS 4** : Utility-first styling
+- **Canvas API** : Visualisations animées
+
+### Architecture
+
+```
+src/
+├── App.tsx                          # Composant principal
+├── components/
+│   ├── CognitiveArchitecture.tsx    # 🧠 Cerebellum
+│   ├── NeuronalEnsembles.tsx        # 🎯 Xsembles2P
+│   ├── MorphoAnalysis.tsx           # 🌳 MorphoLogic
+│   ├── DNRTPanel.tsx                # 🧬 DNRT
+│   ├── NeuronsPanel.tsx             # 📹 NEURONS
+│   ├── HiveVisualization.tsx        # 🐝 Ruche
+│   ├── HardwareComparison.tsx       # 🔬 Hardware
+│   ├── ProcessorGrid.tsx            # ⚡ Processeurs
+│   ├── GPUMonitor.tsx               # 📊 GPU Monitor
+│   ├── TernaryDeployment.tsx        # 🧊 Ternaire
+│   ├── AgentPanel.tsx               # 🤖 Agents
+│   ├── MemoryPanel.tsx              # 💾 Mémoire
+│   ├── GuardPanel.tsx               # 🛡️ Gardes
+│   ├── NetworkFlow.tsx              # 🌐 Réseau
+│   └── StatsBar.tsx                 # 📊 Stats
+└── index.css                        # Design system
 ```
 
 ---
@@ -347,132 +347,27 @@ npm run build
 
 ### Navigation
 
-L'application propose **10 onglets** :
+L'application propose **14 onglets** organisés en 3 catégories :
 
-1. **🐝 Ruche** : Visualisation principale de la ruche d'agents
-2. **🧬 NEURONS** : Reconstruction fMRI-to-vidéo
-3. **🔬 Matériel IA** : Comparaison CPU/GPU/TPU/NPU/LPU
-4. **⚡ Processeurs** : Grille des 32 processeurs
-5. **📊 GPU Monitor** : Monitoring style nvitop
-6. **🧊 Ternaire** : Déploiement modèles ternaires
-7. **🤖 Agents** : Détails des 32 agents
-8. **🧠 Mémoire** : Mem0 ×4 + LLM ×8
-9. **🛡️ Gardes** : Journal des requêtes
-10. **🌐 Réseau** : Topologie mesh
+#### 🎯 Core Cognitive
+1. **Architecture Cognitive** — Boucle cognitive Cerebellum
+2. **Ensembles Neuronaux** — ON/OFF ensembles Xsembles2P
+3. **Morphologie** — Analyse morphologique MorphoLogic
+
+#### 🧬 Neurosciences
+4. **DNRT Vivant** — Système neuronal bio-inspiré
+5. **NEURONS fMRI** — Reconstruction vidéo
+
+#### ⚙️ Système IA
+6-14. Ruche, Hardware, Processeurs, GPU Monitor, Ternaire, Agents, Mémoire, Gardes, Réseau
 
 ### Interactions
 
-- **Cliquez** sur les agents/processeurs pour voir les détails
-- **Survolez** les éléments pour les métriques
-- **Filtrez** les agents par type
-- **Changez** les vues dans GPU Monitor (Dashboard/Détail/Processus)
-- **Explorez** les 6 étapes du pipeline NEURONS
-
----
-
-## 🧩 Composants
-
-### Structure du Code
-
-```
-src/
-├── App.tsx                      # Composant principal
-├── components/
-│   ├── HiveVisualization.tsx    # 🐝 Ruche d'agents
-│   ├── NeuronsPanel.tsx         # 🧬 NEURONS fMRI-to-Video
-│   ├── HardwareComparison.tsx   # 🔬 Comparaison matériel
-│   ├── ProcessorGrid.tsx        # ⚡ Grille processeurs
-│   ├── GPUMonitor.tsx           # 📊 Monitoring GPU
-│   ├── TernaryDeployment.tsx    # 🧊 Modèles ternaires
-│   ├── AgentPanel.tsx           # 🤖 Détails agents
-│   ├── MemoryPanel.tsx          # 🧠 Mémoire Mem0+LLM
-│   ├── GuardPanel.tsx           # 🛡️ Garde I/O
-│   ├── NetworkFlow.tsx          # 🌐 Réseau mesh
-│   └── StatsBar.tsx             # 📊 Barre de stats
-└── index.css                    # Styles globaux
-```
-
-### Technologies
-
-- **React 18** : Framework UI
-- **TypeScript** : Typage statique
-- **Vite** : Build tool ultra-rapide
-- **Tailwind CSS** : Styling utility-first
-- **Canvas API** : Visualisations animées
-
----
-
-## 🔗 Intégrations
-
-### Projets Intégrés
-
-1. **[DNRT](https://github.com/horrible-dong/DNRT)** (ICLR 2024) — **Système Neuronal Vivant**
-   - Dynamic Neural Response Tuning
-   - Response-Adaptive Activation (RAA)
-   - Aggregated Response Regularization (ARR)
-   - Neurones bio-inspirés avec réponses dynamiques
-
-2. **[NEURONS](https://github.com/xmed-lab/NEURONS)** (ICCV 2025)
-   - fMRI-to-Video Reconstruction
-   - Émulation du cortex visuel
-   - Pipeline complet en 6 étapes
-
-3. **[nvitop](https://github.com/XuehaiPan/nvitop)**
-   - Monitoring GPU temps réel
-   - Interface style top
-
-4. **[nvidia_gpu_exporter](https://github.com/utkuozdemir/nvidia_gpu_exporter)**
-   - Métriques Prometheus
-   - Intégration Grafana
-
-5. **[gpu-hot](https://github.com/psalias2006/gpu-hot)**
-   - Détection thermal throttling
-   - Optimisation ventilation
-
-6. **[NPU](https://github.com/buicongnguyen/NPU)**
-   - Edge AI deployment
-   - Low-power inference
-
-### Concepts Intégrés
-
-- **DNRT Vivant** : Système neuronal bio-inspiré avec réponses dynamiques
-- **Modèles Ternaires** : Réduction 20× des poids
-- **Architecture Hétérogène** : CPU+GPU+TPU+NPU+LPU
-- **Ruche d'Agents** : Orchestration distribuée
-- **Mémoire Vectorielle** : Mem0 pour embeddings
-- **Garde Unique** : Point d'entrée/sortie sécurisé
-
----
-
-## 📚 Références
-
-### Articles Scientifiques
-
-1. **DNRT** (ICLR 2024)
-   - Qiu et al. "Dynamic Neural Response Tuning"
-   - Zhejiang University
-   - [OpenReview](https://openreview.net/pdf?id=HiTg16qhxp)
-   - [GitHub](https://github.com/horrible-dong/DNRT)
-
-2. **NEURONS** (ICCV 2025)
-   - Wang et al. "Emulating the Human Visual Cortex Improves Fidelity and Interpretability in fMRI-to-Video Reconstruction"
-   - [arXiv:2503.11167](https://arxiv.org/abs/2503.11167)
-   - [GitHub](https://github.com/xmed-lab/NEURONS)
-
-3. **Hardware Comparison**
-   - "AI Hardware: CPU vs GPU vs TPU vs NPU vs LPU"
-   - Deep Learning Hardware Guide
-
-3. **Ternary Networks**
-   - "Running Ternary Models on Current Hardware"
-   - GPU, CPU, NPU, FPGA deployment strategies
-
-### Ressources
-
-- [HuggingFace NEURONS](https://huggingface.co/McGregorW/NEURONS) — Weights + logs (60GB+)
-- [NVIDIA GPU Architecture](https://www.nvidia.com/en-us/data-center/) — H100, A100, Blackwell
-- [Google TPU](https://cloud.google.com/tpu) — TPU v4/v5p
-- [Groq LPU](https://groq.com/) — Language Processing Unit
+- **Cliquez** sur les éléments pour explorer les détails
+- **Survolez** pour voir les métriques
+- **Contrôlez** les simulations avec les sliders
+- **Changez** les modes de visualisation
+- **Filtrez** les données par catégorie
 
 ---
 
@@ -480,73 +375,70 @@ src/
 
 ### 1. Recherche en Neurosciences
 
-Utiliser NEURONS pour décoder l'activité cérébrale et reconstruire des vidéos à partir de signaux fMRI.
+**Utiliser Cerebellum + Xsembles2P + MorphoLogic pour :**
+- Modéliser des architectures cognitives complètes
+- Analyser des ensembles neuronaux from calcium imaging
+- Extraire des morphométriques neuronales
 
 **Workflow :**
-```bash
-# Sur NeuroHive avec 2× H100
-bash train_neurons.sh 0 neurons 123456 enhance 1
+```python
+# Cerebellum
+agent = CognitiveAgent(perception, memory, planner, reasoner)
+result = agent.run("Analyze neural data")
+
+# Xsembles2P
+Xsembles_2P('video.tif', 'SamplingPeriod', 0.1)
+
+# MorphoLogic
+python -m morphologic.gui
 ```
 
-**Temps :** ~2-3 minutes par trial (10s de vidéo)
+### 2. Développement IA Bio-inspirée
 
-### 2. Déploiement LLM Optimisé
+**Utiliser DNRT + NEURONS pour :**
+- Implémenter des activations neuronales dynamiques
+- Décoder l'activité cérébrale en vidéo
+- Tester des architectures cognitives
 
-Déployer des modèles ternaires pour réduire la consommation mémoire de 20×.
+### 3. Infrastructure IA Distribuée
 
-**Exemple :**
-- Modèle 7B en FP32 : 28 GB VRAM
-- Modèle 7B ternaire : 1.4 GB VRAM
-- **Réduction : 20×**
-
-### 3. Monitoring Infrastructure
-
-Surveiller 32 processeurs sur 8 machines avec alertes en temps réel.
-
-**Métriques clés :**
-- Utilisation GPU/TPU/NPU
-- Température et puissance
-- Latence réseau
-- Throughput agents
-
-### 4. Orchestration Distribuée
-
-Coordonner 32 agents pour traiter des tâches complexes en parallèle.
-
-**Architecture :**
-- 12 ouvriers : exécution
-- 8 math : calcul matriciel
-- 4 superviseurs : orchestration
-- 8 LLM : inférence
-- 4 Mem0 : mémoire
-- 1 garde : I/O
+**Utiliser le système complet pour :**
+- Orchestrer 32 agents sur 8 machines
+- Monitorer 32 processeurs hétérogènes
+- Déployer des modèles ternaires optimisés
 
 ---
 
-## 📊 Métriques
+## 🔗 Références
 
-### Performance Système
+### Articles Scientifiques
 
-| Métrique | Valeur |
-|----------|--------|
-| Agents totaux | 32 |
-| Processeurs | 32 |
-| Machines | 8 |
-| Cœurs totaux | 1,216 |
-| Puissance totale | ~4.5 kW |
-| Throughput | 2,000-4,000 ops/s |
-| Latence moyenne | 8-23 ms |
-| Bande passante réseau | 2.4 GB/s |
+1. **Cerebellum** — Cognitive Architecture Framework
+   - GitHub: https://github.com/Root1V/cerebellum-cognitive-architecture
 
-### NEURONS Performance
+2. **Xsembles2P** — Pérez-Ortega et al. (2024)
+   - "Stimulus encoding by specific inactivation of cortical neurons"
+   - Nat Commun 15, 3192
+   - GitHub: https://github.com/PerezOrtegaJ/Xsembles2P
 
-| Métrique | Valeur |
-|----------|--------|
-| FID ↓ | 15.2 |
-| SSIM ↑ | 0.72 |
-| LPIPS ↓ | 0.18 |
-| CLIP Score ↑ | 0.68 |
-| Temps inférence | 2-3 min/video |
+3. **MorphoLogic** — Sterling et al. (2026)
+   - "Neuronal morphometrics extraction from SWC reconstructions"
+   - Protocols.io
+   - GitHub: https://github.com/MaxLevianSterling/MorphoLogic
+
+4. **DNRT** — Qiu et al. (ICLR 2024)
+   - "Dynamic Neural Response Tuning"
+   - GitHub: https://github.com/horrible-dong/DNRT
+
+5. **NEURONS** — Wang et al. (ICCV 2025)
+   - "Emulating the Human Visual Cortex for fMRI-to-Video"
+   - GitHub: https://github.com/xmed-lab/NEURONS
+
+### Outils
+
+- **nvitop** : https://github.com/XuehaiPan/nvitop
+- **nvidia_gpu_exporter** : https://github.com/utkuozdemir/nvidia_gpu_exporter
+- **gpu-hot** : https://github.com/psalias2006/gpu-hot
 
 ---
 
@@ -556,24 +448,25 @@ Les contributions sont les bienvenues !
 
 1. Fork le projet
 2. Créez une branche (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
+3. Commit (`git commit -m 'Add AmazingFeature'`)
+4. Push (`git push origin feature/AmazingFeature`)
 5. Ouvrez une Pull Request
 
 ---
 
 ## 📄 Licence
 
-Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus de détails.
+MIT License - Voir [LICENSE](LICENSE) pour plus de détails.
 
 ---
 
 ## 🙏 Remerciements
 
-- **NEURONS Team** (XMed Lab) pour le framework fMRI-to-Video
-- **NVIDIA** pour les GPU H100/A100/Blackwell
-- **Google** pour les TPU
-- **Groq** pour les LPU
+- **Root1V** pour Cerebellum Cognitive Architecture
+- **PerezOrtegaJ** pour Xsembles2P
+- **MaxLevianSterling** pour MorphoLogic
+- **horrible-dong** pour DNRT (ICLR 2024)
+- **xmed-lab** pour NEURONS (ICCV 2025)
 - **Communauté open-source** pour nvitop, nvidia_gpu_exporter, gpu-hot
 
 ---
@@ -582,7 +475,6 @@ Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus de détails.
 
 Pour questions ou suggestions :
 - GitHub Issues : [ouvrir une issue](https://github.com/votre-username/neurohive/issues)
-- Email : votre-email@example.com
 
 ---
 
@@ -590,6 +482,8 @@ Pour questions ou suggestions :
 
 **⭐ Si ce projet vous est utile, n'hésitez pas à lui donner une étoile !**
 
-Fait avec ❤️ pour la communauté IA
+**Conçu pour les ingénieurs en IA cognitive qui repoussent les limites de l'intelligence artificielle bio-inspirée**
+
+Fait avec 🧠 par des architectes de systèmes cognitifs
 
 </div>

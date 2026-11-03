@@ -9,6 +9,7 @@ import HardwareComparison from './components/HardwareComparison'
 import TernaryDeployment from './components/TernaryDeployment'
 import GPUMonitor from './components/GPUMonitor'
 import NeuronsPanel from './components/NeuronsPanel'
+import DNRTPanel from './components/DNRTPanel'
 import StatsBar from './components/StatsBar'
 
 function App() {
@@ -24,13 +25,14 @@ function App() {
 
   const tabs = [
     { id: 'hive', label: '🐝 Ruche' },
-    { id: 'neurons', label: '🧬 NEURONS' },
+    { id: 'dnrt', label: '🧬 DNRT Vivant' },
+    { id: 'neurons', label: '🧠 NEURONS' },
     { id: 'hardware', label: '🔬 Matériel IA' },
     { id: 'processors', label: '⚡ Processeurs' },
     { id: 'gpu-monitor', label: '📊 GPU Monitor' },
     { id: 'ternary', label: '🧊 Ternaire' },
     { id: 'agents', label: '🤖 Agents' },
-    { id: 'memory', label: '🧠 Mémoire' },
+    { id: 'memory', label: '💾 Mémoire' },
     { id: 'guards', label: '🛡️ Gardes' },
     { id: 'network', label: '🌐 Réseau' },
   ]
@@ -56,7 +58,7 @@ function App() {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
                 NeuroHive
               </h1>
-              <p className="text-xs text-gray-400">Ruche d'IA Distribuée • CPU+GPU+TPU+NPU+LPU • NEURONS fMRI-to-Video • Ternaire</p>
+              <p className="text-xs text-gray-400">Système IA Vivant • DNRT Bio-inspiré • NEURONS fMRI-to-Video • CPU+GPU+TPU+NPU+LPU</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -95,6 +97,7 @@ function App() {
       {/* Main Content */}
       <main className="relative z-10 max-w-[1600px] mx-auto px-4 py-6">
         {activeTab === 'hive' && <HiveVisualization tick={tick} />}
+        {activeTab === 'dnrt' && <DNRTPanel tick={tick} />}
         {activeTab === 'neurons' && <NeuronsPanel tick={tick} />}
         {activeTab === 'hardware' && <HardwareComparison />}
         {activeTab === 'processors' && <ProcessorGrid tick={tick} />}

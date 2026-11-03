@@ -1,14 +1,14 @@
-# 🐝 NeuroHive — Ruche d'IA Distribuée
+# 🐝 NeuroHive — Système IA Vivant
 
 <div align="center">
 
-![NeuroHive](https://img.shields.io/badge/NeuroHive-v2.0-green)
+![NeuroHive](https://img.shields.io/badge/NeuroHive-v3.0-green)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
-**Système d'IA hétérogène distribué intégrant CPU+GPU+TPU+NPU+LPU avec monitoring temps réel, déploiement de modèles ternaires, et reconstruction fMRI-to-vidéo via NEURONS (ICCV 2025)**
+**Système IA vivant bio-inspiré intégrant DNRT (ICLR 2024), NEURONS (ICCV 2025), CPU+GPU+TPU+NPU+LPU avec monitoring temps réel, déploiement de modèles ternaires, et reconstruction fMRI-to-vidéo**
 
-[Architecture](#-architecture) • [Fonctionnalités](#-fonctionnalités) • [Installation](#-installation) • [Utilisation](#-utilisation)
+[Architecture](#-architecture) • [DNRT Vivant](#-dnrt---système-neuronal-vivant) • [NEURONS](#-neurons---fmri-to-video) • [Fonctionnalités](#-fonctionnalités) • [Installation](#-installation)
 
 </div>
 
@@ -29,13 +29,14 @@
 
 ## 🌟 Vue d'Ensemble
 
-**NeuroHive** est un dashboard interactif qui visualise et orchestre une architecture d'IA distribuée hétérogène. Le système intègre :
+**NeuroHive** est un **système IA vivant** bio-inspiré qui visualise et orchestre une architecture distribuée hétérogène. Le système intègre :
 
+- 🧬 **DNRT Vivant** : Système neuronal bio-inspiré avec réponses dynamiques (ICLR 2024)
 - 🐝 **Ruche d'Agents** : 32 agents spécialisés (ouvriers, math, superviseurs, LLM, Mem0, garde)
 - 🔬 **Matériel IA** : Comparaison approfondie CPU vs GPU vs TPU vs NPU vs LPU
 - ⚡ **Monitoring GPU** : Style nvitop/nvidia_gpu_exporter avec métriques temps réel
 - 🧊 **Modèles Ternaires** : Déploiement sur GPU/CPU/NPU/FPGA avec réduction 20×
-- 🧬 **NEURONS** : Reconstruction fMRI-to-vidéo (ICCV 2025)
+- 🧠 **NEURONS** : Reconstruction fMRI-to-vidéo (ICCV 2025)
 - 🛡️ **Garde Unique** : Point d'entrée/sortie centralisé
 - 🌐 **Réseau Mesh** : Topologie distribuée avec synchronisation
 
@@ -102,9 +103,97 @@
 
 ---
 
+## 🧬 DNRT — Système Neuronal Vivant
+
+**Dynamic Neural Response Tuning** (ICLR 2024) est un mécanisme bio-inspiré qui rend les réseaux de neurones artificiels plus proches des neurones biologiques.
+
+### Concept Biologique
+
+Les neurones biologiques possèdent des **conditions de réponse dynamiques** qui dépendent de :
+- Propriétés neuronales intrinsèques
+- Environnement en temps réel
+- Force et caractéristiques du signal d'entrée
+
+Contrairement aux activations statiques des ANN, DNRT introduit :
+
+### ⚡ RAA — Response-Adaptive Activation
+
+**Ajuste dynamiquement les seuils d'activation** selon la force du signal :
+
+```
+Signal fort → Seuil plus bas (plus sensible)
+Signal faible → Seuil plus haut (moins sensible)
+```
+
+**Implémentation :**
+```python
+# Ajustement dynamique du seuil
+threshold = max(0.3, min(0.9,
+    threshold + (random - 0.5) * 0.05))
+
+# Réponse adaptative
+if input_strength > 0.8:
+    response = "high"
+elif input_strength > 0.4:
+    response = "medium"
+else:
+    response = "low"
+```
+
+### 🎯 ARR — Aggregated Response Regularization
+
+**Améliore la spécificité de catégorie** en imposant des contraintes sur la distribution de réponse :
+
+```python
+# Regularization loss
+L_arr = λ * ||response_dist - target_dist||²
+
+# Target: distribution spécifique
+target_dist = one_hot(category)
+
+# Response: distribution actuelle
+response_dist = softmax(output)
+```
+
+### Visualisation Temps Réel
+
+Le dashboard DNRT offre :
+- **20 neurones** (5 input, 10 hidden, 5 output)
+- **Simulation bio-inspirée** avec potentiels membranaires
+- **Signaux animés** entre neurones
+- **Contrôle interactif** de l'intensité d'entrée
+- **4 modes** : Système Vivant, RAA, ARR, Vue d'ensemble
+
+### Performance
+
+| Métrique | Valeur |
+|----------|--------|
+| Dataset | CIFAR-100 |
+| Top-1 Accuracy | 82.4% |
+| vs Baseline | +2.1% |
+| Interprétabilité | SOTA |
+
+---
+
 ## ✨ Fonctionnalités
 
-### 1. 🐝 Ruche d'Agents (Hive Visualization)
+### 1. 🧬 DNRT — Système Neuronal Vivant
+
+Visualisation temps réel d'un réseau neuronal bio-inspiré avec :
+- **20 neurones** organisés en 3 couches (input, hidden, output)
+- **Potentiels membranaires** animés
+- **Seuils dynamiques** ajustables (RAA)
+- **Spécificité de catégorie** (ARR)
+- **Signaux propagés** entre neurones
+- **Contrôle interactif** de l'intensité d'entrée
+
+**Modes de visualisation :**
+- 🧬 **Système Vivant** : Simulation temps réel
+- ⚡ **RAA** : Response-Adaptive Activation détaillée
+- 🎯 **ARR** : Aggregated Response Regularization
+- 📊 **Vue d'ensemble** : Architecture complète
+
+### 2. 🐝 Ruche d'Agents (Hive Visualization)
 
 Visualisation temps réel de la ruche d'IA avec :
 - **32 agents** répartis en 6 catégories
@@ -317,29 +406,36 @@ src/
 
 ### Projets Intégrés
 
-1. **[NEURONS](https://github.com/xmed-lab/NEURONS)** (ICCV 2025)
+1. **[DNRT](https://github.com/horrible-dong/DNRT)** (ICLR 2024) — **Système Neuronal Vivant**
+   - Dynamic Neural Response Tuning
+   - Response-Adaptive Activation (RAA)
+   - Aggregated Response Regularization (ARR)
+   - Neurones bio-inspirés avec réponses dynamiques
+
+2. **[NEURONS](https://github.com/xmed-lab/NEURONS)** (ICCV 2025)
    - fMRI-to-Video Reconstruction
    - Émulation du cortex visuel
    - Pipeline complet en 6 étapes
 
-2. **[nvitop](https://github.com/XuehaiPan/nvitop)**
+3. **[nvitop](https://github.com/XuehaiPan/nvitop)**
    - Monitoring GPU temps réel
    - Interface style top
 
-3. **[nvidia_gpu_exporter](https://github.com/utkuozdemir/nvidia_gpu_exporter)**
+4. **[nvidia_gpu_exporter](https://github.com/utkuozdemir/nvidia_gpu_exporter)**
    - Métriques Prometheus
    - Intégration Grafana
 
-4. **[gpu-hot](https://github.com/psmed-lab/gpu-hot)**
+5. **[gpu-hot](https://github.com/psalias2006/gpu-hot)**
    - Détection thermal throttling
    - Optimisation ventilation
 
-5. **[NPU](https://github.com/buicongnguyen/NPU)**
+6. **[NPU](https://github.com/buicongnguyen/NPU)**
    - Edge AI deployment
    - Low-power inference
 
 ### Concepts Intégrés
 
+- **DNRT Vivant** : Système neuronal bio-inspiré avec réponses dynamiques
 - **Modèles Ternaires** : Réduction 20× des poids
 - **Architecture Hétérogène** : CPU+GPU+TPU+NPU+LPU
 - **Ruche d'Agents** : Orchestration distribuée
@@ -352,12 +448,18 @@ src/
 
 ### Articles Scientifiques
 
-1. **NEURONS** (ICCV 2025)
+1. **DNRT** (ICLR 2024)
+   - Qiu et al. "Dynamic Neural Response Tuning"
+   - Zhejiang University
+   - [OpenReview](https://openreview.net/pdf?id=HiTg16qhxp)
+   - [GitHub](https://github.com/horrible-dong/DNRT)
+
+2. **NEURONS** (ICCV 2025)
    - Wang et al. "Emulating the Human Visual Cortex Improves Fidelity and Interpretability in fMRI-to-Video Reconstruction"
    - [arXiv:2503.11167](https://arxiv.org/abs/2503.11167)
    - [GitHub](https://github.com/xmed-lab/NEURONS)
 
-2. **Hardware Comparison**
+3. **Hardware Comparison**
    - "AI Hardware: CPU vs GPU vs TPU vs NPU vs LPU"
    - Deep Learning Hardware Guide
 

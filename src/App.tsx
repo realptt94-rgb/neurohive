@@ -5,6 +5,9 @@ import AgentPanel from './components/AgentPanel'
 import MemoryPanel from './components/MemoryPanel'
 import GuardPanel from './components/GuardPanel'
 import NetworkFlow from './components/NetworkFlow'
+import HardwareComparison from './components/HardwareComparison'
+import TernaryDeployment from './components/TernaryDeployment'
+import GPUMonitor from './components/GPUMonitor'
 import StatsBar from './components/StatsBar'
 
 function App() {
@@ -18,10 +21,22 @@ function App() {
     return () => clearInterval(interval)
   }, [])
 
+  const tabs = [
+    { id: 'hive', label: '🐝 Ruche' },
+    { id: 'hardware', label: '🔬 Matériel IA' },
+    { id: 'processors', label: '⚡ Processeurs' },
+    { id: 'gpu-monitor', label: '📊 GPU Monitor' },
+    { id: 'ternary', label: '🧊 Ternaire' },
+    { id: 'agents', label: '🤖 Agents' },
+    { id: 'memory', label: '🧠 Mémoire' },
+    { id: 'guards', label: '🛡️ Gardes' },
+    { id: 'network', label: '🌐 Réseau' },
+  ]
+
   return (
     <div className="min-h-screen bg-gray-950 text-white font-mono overflow-hidden">
       {/* Background animated grid */}
-      <div className="fixed inset-0 opacity-10">
+      <div className="fixed inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0" style={{
           backgroundImage: 'linear-gradient(rgba(0,255,136,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.1) 1px, transparent 1px)',
           backgroundSize: '50px 50px'
@@ -30,7 +45,7 @@ function App() {
 
       {/* Header */}
       <header className="relative z-10 border-b border-green-500/30 bg-gray-950/80 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-[1600px] mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-cyan-500 flex items-center justify-center animate-pulse">
               <span className="text-xl">🐝</span>
@@ -39,11 +54,11 @@ function App() {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
                 NeuroHive
               </h1>
-              <p className="text-xs text-gray-400">Ruche d'IA Distribuée • Processeurs Cognitifs Virtuels</p>
+              <p className="text-xs text-gray-400">Ruche d'IA Distribuée • CPU+GPU+TPU+NPU+LPU • Modèles Ternaires</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <div className="text-right">
+            <div className="text-right hidden md:block">
               <div className="text-xs text-gray-500">CYCLE</div>
               <div className="text-green-400 font-bold">{tick.toLocaleString()}</div>
             </div>
@@ -58,15 +73,8 @@ function App() {
 
       {/* Navigation */}
       <nav className="relative z-10 border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 flex gap-1 overflow-x-auto">
-          {[
-            { id: 'hive', label: '🐝 Ruche', icon: 'hive' },
-            { id: 'processors', label: '⚡ Processeurs', icon: 'cpu' },
-            { id: 'agents', label: '🤖 Agents', icon: 'agents' },
-            { id: 'memory', label: '🧠 Mémoire', icon: 'memory' },
-            { id: 'guards', label: '🛡️ Gardes', icon: 'guards' },
-            { id: 'network', label: '🌐 Réseau', icon: 'network' },
-          ].map(tab => (
+        <div className="max-w-[1600px] mx-auto px-4 flex gap-1 overflow-x-auto">
+          {tabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
@@ -83,9 +91,12 @@ function App() {
       </nav>
 
       {/* Main Content */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 py-6">
+      <main className="relative z-10 max-w-[1600px] mx-auto px-4 py-6">
         {activeTab === 'hive' && <HiveVisualization tick={tick} />}
+        {activeTab === 'hardware' && <HardwareComparison />}
         {activeTab === 'processors' && <ProcessorGrid tick={tick} />}
+        {activeTab === 'gpu-monitor' && <GPUMonitor tick={tick} />}
+        {activeTab === 'ternary' && <TernaryDeployment />}
         {activeTab === 'agents' && <AgentPanel tick={tick} />}
         {activeTab === 'memory' && <MemoryPanel tick={tick} />}
         {activeTab === 'guards' && <GuardPanel tick={tick} />}

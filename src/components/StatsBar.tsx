@@ -33,9 +33,11 @@ export default function StatsBar({ tick }: StatsBarProps) {
     { label: 'LLM×8', value: stats.llmInstances, color: 'text-purple-400', unit: '' },
     { label: 'Mem0×4', value: stats.mem0Nodes, color: 'text-cyan-400', unit: '' },
     { label: 'Garde×1', value: stats.guards, color: 'text-yellow-400', unit: '' },
+    { label: 'CPU', value: '128', color: 'text-emerald-400', unit: 'cœurs' },
     { label: 'GPU', value: stats.gpuLoad.toFixed(0), color: 'text-red-400', unit: '%' },
     { label: 'TPU', value: stats.tpuLoad.toFixed(0), color: 'text-orange-400', unit: '%' },
     { label: 'NPU', value: stats.npuLoad.toFixed(0), color: 'text-blue-400', unit: '%' },
+    { label: 'LPU', value: '<1', color: 'text-yellow-400', unit: 'ms' },
     { label: 'Throughput', value: stats.throughput, color: 'text-emerald-400', unit: 'ops/s' },
     { label: 'Latence', value: stats.latency, color: 'text-pink-400', unit: 'ms' },
   ]

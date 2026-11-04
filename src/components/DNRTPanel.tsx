@@ -713,7 +713,7 @@ export default function DNRTPanel({ tick }: DNRTPanelProps) {
             <span className="text-green-400">[1]</span> Qiu et al. "Dynamic Neural Response Tuning" — ICLR 2024
           </div>
           <div>
-            <span className="text-green-400">[2]</span> GitHub: <a href="https://github.com/horrible-dong/DNRT" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">github.com/horrible-dong/DNRT</a>
+            <span className="text-green-400">[2]</span> GitHub: <a href={import.meta.env.VITE_GITHUB_REPO} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Repository NeuroHive</a>
           </div>
           <div>
             <span className="text-green-400">[3]</span> Paper: <a href="https://openreview.net/pdf?id=HiTg16qhxp" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">openreview.net/pdf?id=HiTg16qhxp</a>

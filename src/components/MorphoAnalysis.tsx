@@ -404,7 +404,7 @@ export default function MorphoAnalysis() {
             </div>
           </div>
           <a
-            href="https://github.com/MaxLevianSterling/MorphoLogic"
+            href={import.meta.env.VITE_GITHUB_REPO}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary"

@@ -345,7 +345,7 @@ export default function NeuronalEnsembles() {
             </div>
           </div>
           <a
-            href="https://github.com/PerezOrtegaJ/Xsembles2P"
+            href={import.meta.env.VITE_GITHUB_REPO}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary"

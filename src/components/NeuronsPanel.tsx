@@ -434,7 +434,7 @@ export default function NeuronsPanel({ tick }: NeuronsPanelProps) {
             <span className="text-green-400">[1]</span> Wang et al. "Neurons: Emulating the Human Visual Cortex Improves Fidelity and Interpretability in fMRI-to-Video Reconstruction" — ICCV 2025
           </div>
           <div>
-            <span className="text-green-400">[2]</span> GitHub: <a href="https://github.com/xmed-lab/NEURONS" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">github.com/xmed-lab/NEURONS</a>
+            <span className="text-green-400">[2]</span> GitHub: <a href={import.meta.env.VITE_GITHUB_REPO} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Repository NeuroHive</a>
           </div>
           <div>
             <span className="text-green-400">[3]</span> arXiv: <a href="https://arxiv.org/abs/2503.11167" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">2503.11167</a>

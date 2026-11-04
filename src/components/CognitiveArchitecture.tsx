@@ -286,7 +286,7 @@ export default function CognitiveArchitecture() {
             <div className="text-sm text-slate-400">Framework Python modulaire pour agents cognitifs autonomes</div>
           </div>
           <a
-            href="https://github.com/Root1V/cerebellum-cognitive-architecture"
+            href={import.meta.env.VITE_GITHUB_REPO}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary"

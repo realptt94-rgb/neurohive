@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import si from 'systeminformation';
+import nvidiaService from './services/nvidiaService.js';
 
 dotenv.config();
 
@@ -286,6 +287,96 @@ app.get('/api/neurons', (req, res) => {
       v5: { activity: 0.7 + Math.random() * 0.2 }
     }
   });
+});
+
+// ============================================
+// NVIDIA API ENDPOINTS - AUTONOMOUS SYSTEM
+// ============================================
+
+// Vision-Language Analysis
+app.post('/api/nvidia/vision', async (req, res) => {
+  try {
+    const { imageUrl, prompt } = req.body;
+    if (!imageUrl || !prompt) {
+      return res.status(400).json({ error: 'imageUrl and prompt are required' });
+    }
+    const result = await nvidiaService.analyzeImage(imageUrl, prompt);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Reasoning
+app.post('/api/nvidia/reason', async (req, res) => {
+  try {
+    const { prompt } = req.body;
+    if (!prompt) {
+      return res.status(400).json({ error: 'prompt is required' });
+    }
+    const result = await nvidiaService.reason(prompt);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Safety Classification
+app.post('/api/nvidia/safety', async (req, res) => {
+  try {
+    const { content, type } = req.body;
+    if (!content) {
+      return res.status(400).json({ error: 'content is required' });
+    }
+    const result = await nvidiaService.classifySafety(content, type || 'text');
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Topic Control
+app.post('/api/nvidia/topic', async (req, res) => {
+  try {
+    const { systemPrompt, userMessage, allowedTopics } = req.body;
+    if (!systemPrompt || !userMessage) {
+      return res.status(400).json({ error: 'systemPrompt and userMessage are required' });
+    }
+    const result = await nvidiaService.controlTopic(systemPrompt, userMessage, allowedTopics);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Biology - Protein Generation
+app.post('/api/nvidia/biology', async (req, res) => {
+  try {
+    const { inputPDB, contigs, hotspotRes, diffusionSteps } = req.body;
+    if (!inputPDB || !contigs || !hotspotRes) {
+      return res.status(400).json({ error: 'inputPDB, contigs, and hotspotRes are required' });
+    }
+    const result = await nvidiaService.generateProtein(inputPDB, contigs, hotspotRes, diffusionSteps);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// NVIDIA Models Status
+app.get('/api/nvidia/models', (req, res) => {
+  const models = nvidiaService.getAvailableModels();
+  res.json({ models, timestamp: new Date().toISOString() });
+});
+
+// NVIDIA Health Check
+app.get('/api/nvidia/health', async (req, res) => {
+  try {
+    const health = await nvidiaService.healthCheck();
+    res.json(health);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // ============================================

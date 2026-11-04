@@ -13,6 +13,7 @@ import DNRTPanel from './components/DNRTPanel'
 import CognitiveArchitecture from './components/CognitiveArchitecture'
 import NeuronalEnsembles from './components/NeuronalEnsembles'
 import MorphoAnalysis from './components/MorphoAnalysis'
+import NVIDIAIntegration from './components/NVIDIAIntegration'
 import StatsBar from './components/StatsBar'
 import { NeuroHiveProvider, useNeuroHive } from './context/NeuroHiveContext'
 
@@ -41,6 +42,7 @@ function AppContent() {
   }, [])
 
   const tabs = [
+    { id: 'nvidia', label: '🤖 NVIDIA AI', category: 'core' },
     { id: 'cognitive', label: '🧠 Architecture Cognitive', category: 'core' },
     { id: 'ensembles', label: '🎯 Ensembles Neuronaux', category: 'core' },
     { id: 'morpho', label: '🌳 Morphologie', category: 'core' },
@@ -82,13 +84,12 @@ function AppContent() {
                 <span className="text-2xl">🧠</span>
               </div>
               <div>
-                <h1 className="text-3xl font-bold gradient-text">
-                  NeuroHive v4.0
-                </h1>
-                <p className="text-sm text-slate-400 mt-1">
-                  Architecture Cognitive Avancée • IA Bio-inspirée • Neurosciences Computationnelles
-                </p>
-              </div>
+              <h1 className="text-3xl font-bold gradient-text">
+                NeuroHive v5.0
+              </h1>
+              <p className="text-sm text-slate-400 mt-1">
+                Système Autonome • NVIDIA AI Intégré • Architecture Cognitive • 100% Indépendant
+              </p>              </div>
             </div>
             <div className="flex items-center gap-6">
               <div className="text-right hidden md:block">
@@ -141,6 +142,7 @@ function AppContent() {
       {/* Main Content */}
       <main className="relative z-10 max-w-[1800px] mx-auto px-6 py-8">
         <div className="animate-fade-in">
+          {activeTab === 'nvidia' && <NVIDIAIntegration />}
           {activeTab === 'cognitive' && <CognitiveArchitecture />}
           {activeTab === 'ensembles' && <NeuronalEnsembles />}
           {activeTab === 'morpho' && <MorphoAnalysis />}
@@ -163,11 +165,11 @@ function AppContent() {
         <div className="max-w-[1800px] mx-auto px-6 py-6">
           <div className="flex items-center justify-between text-sm text-slate-500">
             <div>
-              NeuroHive v4.0 — Architecture Cognitive Avancée pour Ingénieurs IA
+              NeuroHive v5.0 — Système Autonome avec NVIDIA AI Intégré
             </div>
             <div className="flex items-center gap-4">
               <ConnectionStatus />
-              <span>Cerebellum • Xsembles2P • MorphoLogic • DNRT • NEURONS</span>
+              <span>NVIDIA Nemotron • Llama Guard • RFDiffusion • 100% Autonome</span>
             </div>
           </div>
         </div>

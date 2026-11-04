@@ -14,8 +14,22 @@ import CognitiveArchitecture from './components/CognitiveArchitecture'
 import NeuronalEnsembles from './components/NeuronalEnsembles'
 import MorphoAnalysis from './components/MorphoAnalysis'
 import StatsBar from './components/StatsBar'
+import { NeuroHiveProvider, useNeuroHive } from './context/NeuroHiveContext'
 
-function App() {
+function ConnectionStatus() {
+  const { isConnected } = useNeuroHive();
+  
+  return (
+    <div className="flex items-center gap-2">
+      <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>
+      <span className={`text-xs ${isConnected ? 'text-green-400' : 'text-red-400'}`}>
+        {isConnected ? 'CONNECTÉ' : 'DÉCONNECTÉ'}
+      </span>
+    </div>
+  );
+}
+
+function AppContent() {
   const [activeTab, setActiveTab] = useState('cognitive')
   const [tick, setTick] = useState(0)
 
@@ -152,12 +166,21 @@ function App() {
               NeuroHive v4.0 — Architecture Cognitive Avancée pour Ingénieurs IA
             </div>
             <div className="flex items-center gap-4">
+              <ConnectionStatus />
               <span>Cerebellum • Xsembles2P • MorphoLogic • DNRT • NEURONS</span>
             </div>
           </div>
         </div>
       </footer>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <NeuroHiveProvider>
+      <AppContent />
+    </NeuroHiveProvider>
   )
 }
 

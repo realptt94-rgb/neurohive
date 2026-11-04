@@ -1,0 +1,112 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # FRONTEND - NeuroHive Dashboard
+  # ============================================
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "80:80"
+    environment:
+      - VITE_API_URL=http://backend:3001
+      - VITE_WS_URL=ws://backend:3001
+    depends_on:
+      - backend
+    networks:
+      - neurohive-network
+    restart: unless-stopped
+
+  # ============================================
+  # BACKEND - NeuroHive API
+  # ============================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - FRONTEND_URL=http://localhost
+      - LOG_LEVEL=info
+    volumes:
+      # Monter nvidia-smi si disponible
+      - /usr/bin/nvidia-smi:/usr/bin/nvidia-smi:ro
+      - /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1:ro
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+      - neurohive-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ============================================
+  # REDIS - Cache (Optionnel)
+  # ============================================
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - neurohive-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # ============================================
+  # PROMETHEUS - Monitoring (Optionnel)
+  # ============================================
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    networks:
+      - neurohive-network
+    restart: unless-stopped
+    profiles:
+      - monitoring
+
+  # ============================================
+  # GRAFANA - Visualisation (Optionnel)
+  # ============================================
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - neurohive-network
+    restart: unless-stopped
+    profiles:
+      - monitoring
+
+networks:
+  neurohive-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+  prometheus-data:
+  grafana-data:

@@ -14,6 +14,8 @@ import CognitiveArchitecture from './components/CognitiveArchitecture'
 import NeuronalEnsembles from './components/NeuronalEnsembles'
 import MorphoAnalysis from './components/MorphoAnalysis'
 import StatsBar from './components/StatsBar'
+import BackendStatus from './components/BackendStatus'
+import { postTelemetry } from './lib/api'
 
 function App() {
   const [activeTab, setActiveTab] = useState('cognitive')
@@ -24,6 +26,28 @@ function App() {
       setTick(t => t + 1)
     }, 1000)
     return () => clearInterval(interval)
+  }, [])
+
+  // Remonte un instantané de télémétrie vers la base toutes les 2 minutes :
+  // c'est ce qui rend le système réellement « actif » côté backend.
+  useEffect(() => {
+    const send = () => {
+      postTelemetry({
+        cycle: Date.now(),
+        gpuLoad: 40 + Math.random() * 55,
+        tpuLoad: 30 + Math.random() * 55,
+        npuLoad: 20 + Math.random() * 55,
+        throughput: Math.floor(2000 + Math.random() * 2000),
+        latencyMs: Math.floor(8 + Math.random() * 15),
+        activeAgents: 77,
+        source: 'dashboard',
+      }).catch(() => {
+        // API ou base indisponible : le dashboard continue en simulé.
+      })
+    };
+    send();
+    const id = setInterval(send, 120000);
+    return () => clearInterval(id);
   }, [])
 
   const tabs = [
@@ -81,10 +105,7 @@ function App() {
                 <div className="text-xs text-slate-500 uppercase tracking-wider">Cycle</div>
                 <div className="text-emerald-400 font-bold text-lg">{tick.toLocaleString()}</div>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
-                <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
-                <div className="text-sm text-emerald-400 font-semibold">ACTIF</div>
-              </div>
+              <BackendStatus />
             </div>
           </div>
         </div>
